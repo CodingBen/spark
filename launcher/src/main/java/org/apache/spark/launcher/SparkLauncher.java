@@ -84,7 +84,7 @@ public class SparkLauncher extends AbstractLauncher<SparkLauncher> {
    * Maximum time (in ms) to wait for a child process to connect back to the launcher server
    * when using @link{#start()}.
    */
-  public static final String CHILD_CONNECTION_TIMEOUT = "spark.launcher.childConectionTimeout";
+  static final String CHILD_CONNECTION_TIMEOUT = "spark.launcher.childConectionTimeout";
 
   /** Used internally to create unique logger names. */
   private static final AtomicInteger COUNTER = new AtomicInteger();
@@ -103,13 +103,13 @@ public class SparkLauncher extends AbstractLauncher<SparkLauncher> {
    * @param name Config name.
    * @param value Config value.
    */
-  public static void setConfig(String name, String value) {
+  static void setConfig(String name, String value) {
     launcherConfig.put(name, value);
   }
 
   // Visible for testing.
-  File workingDir;
-  boolean redirectErrorStream;
+  private File workingDir;
+  private boolean redirectErrorStream;
   ProcessBuilder.Redirect errorStream;
   ProcessBuilder.Redirect outputStream;
 

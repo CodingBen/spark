@@ -36,7 +36,7 @@ abstract class AbstractAppHandle implements SparkAppHandle {
   private volatile String appId;
   private volatile boolean disposed;
 
-  protected AbstractAppHandle(LauncherServer server) {
+  AbstractAppHandle(LauncherServer server) {
     this.server = server;
     this.state = new AtomicReference<>(State.UNKNOWN);
   }

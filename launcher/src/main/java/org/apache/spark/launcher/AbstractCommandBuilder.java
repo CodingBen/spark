@@ -47,7 +47,7 @@ abstract class AbstractCommandBuilder {
   String javaHome;
   String mainClass;
   String master;
-  protected String propertiesFile;
+  String propertiesFile;
   final List<String> appArgs;
   final List<String> jars;
   final List<String> files;
@@ -124,9 +124,7 @@ abstract class AbstractCommandBuilder {
 
   void addOptionString(List<String> cmd, String options) {
     if (!isEmpty(options)) {
-      for (String opt : parseOptionString(options)) {
-        cmd.add(opt);
-      }
+      cmd.addAll(parseOptionString(options));
     }
   }
 
@@ -135,7 +133,7 @@ abstract class AbstractCommandBuilder {
    * each entry is formatted in the way expected by <i>java.net.URLClassLoader</i> (more
    * specifically, with trailing slashes for directories).
    */
-  List<String> buildClassPath(String appClassPath) throws IOException {
+  private List<String> buildClassPath(String appClassPath) throws IOException {
     String sparkHome = getSparkHome();
 
     Set<String> cp = new LinkedHashSet<>();
